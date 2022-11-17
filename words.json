@@ -1,0 +1,16 @@
+{ 
+  "Famous People" : [
+    "Isac Newton", "Obama", "Donald Trumb", "Andrew tate", "Elon Musk", "Messi", "Nelson Mandela", "Bill Gates", "Hitler"],
+    "Countries" : [
+      "Egypt", "Sudan", "Saudi Arabia", "United Kingdom", "Algeria", "Pakistan", "India", "America", "Japan", "china", "canada", "chad", "Ethiopia", "france"
+    ],
+    "Sports" : [
+      "Football", "Tennis", "basketball", "rocketball", "golf", "volleyball", "swimming", "mountain climbing", "", "boxing", "squash"
+    ],
+    "collegue majors" : [
+      "phisycs", "chemistry", "mathmatics", "it", "computer schienc", "civil", "medicine", "acounting", "marketing", "robotics"
+    ],
+    "Programming languages" : [
+      "php", "javascript", "go", "scale", "fortran", "r", "mysql", "python"
+    ]
+}

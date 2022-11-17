@@ -1,0 +1,367 @@
+:root {
+  --b-width: 4px;
+  --b-color: #232C33;
+  --bg-color: #320A28;
+  --main-color: #511730;
+  --alt-color: #8E443D;
+  --main-light-color: #CB9173;
+  --alt-light-color: #E0D68A;
+  --white :  white;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Tahoma, Arial;
+  background-color: var(--alt-light-color);
+}
+
+.container {
+  margin: 20px auto;
+  width: 80wv;
+}
+
+.row {
+  display: flex;
+  height: 70vh;
+}
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column;
+  }
+}
+hr {
+  border: 1px solid #eee;
+}
+.game-info {
+  display: flex;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: var(--white);
+  font-weight: bold;
+}
+.game-info .game-name {
+  flex: 1;
+  margin-left: 50px;
+}
+.game-info .category{
+  flex: 1;
+  text-align: right;
+  margin-right: 50px;
+}
+.game-info .category span{
+  text-transform: capitalize;
+  color: var(--alt-color);
+  font-weight: bold;
+}
+@media (max-width: 767px) {
+  .game-info {
+    font-size: 14px;
+  }
+  .game-info .game-name {
+    margin-left: 5px;
+  }
+  .game-info .category{
+    margin-right: 5px;
+  }
+}
+
+.hangman-draw {
+  flex: 1;
+  background-color: var(--alt-light-color);
+  padding: 20px;
+  height: 324px;
+}
+
+.hangman-draw .the-draw {
+  width: 60px;
+  height: 280px;
+  border-bottom: var(--b-width) solid var(--b-color);
+  position: relative;
+  margin: auto;
+  left: -50px;
+  display: none;
+}
+
+.hangman-draw .the-stand::before {
+  content: "";
+  position: absolute;
+  width: var(--b-width);
+  background-color: var(--b-color);
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.hangman-draw .the-hang {
+  display: none;
+}
+
+.hangman-draw .the-hang::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  background-color: var(--b-color);
+  height: var(--b-width);
+  left: 30px;
+  top: 15px;
+}
+
+.hangman-draw .the-hang::after {
+  content: "";
+  position: absolute;
+  width: var(--b-width);
+  background-color: var(--b-color);
+  height: 30px;
+  left: 130px;
+  top: 15px;
+}
+
+.hangman-draw .the-rope {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: absolute;
+  left: 98px;
+  top: 45px;
+  border: var(--b-width) dashed var(--b-color);
+  display: none;
+}
+
+.hangman-draw .the-man .head {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  left: 108px;
+  top: 55px;
+  border: var(--b-width) solid var(--b-color);
+  display: none;
+}
+
+.hangman-draw .the-man .body {
+  position: absolute;
+  background-color: var(--b-color);
+  width: var(--b-width);
+  height: 110px;
+  top: 103px;
+  left: 130px;
+  display: none;
+}
+
+.hangman-draw .the-man .hands::before,
+.hangman-draw .the-man .hands::after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  height: var(--b-width);
+  background-color: var(--b-color);
+  top: 130px;
+}
+.hangman-draw .the-man .hands::before{
+  left: 85px;
+  transform: rotate(30deg);
+}
+.hangman-draw .the-man .hands::after{
+  left: 130px;
+  transform: rotate(-30deg);
+}
+.hangman-draw .the-man .legs::before,
+.hangman-draw .the-man .legs::after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  height: var(--b-width);
+  background-color: var(--b-color);
+  top: 222px;
+}
+.hangman-draw .the-man .legs::before{
+  left: 90px;
+  transform: rotate(-40deg);
+}
+.hangman-draw .the-man .legs::after{
+  left: 125px;
+  transform: rotate(40deg);
+}
+.hangman-draw .hands{
+  display: none;
+}
+.hangman-draw .legs {
+  display: none;
+}
+
+.hangman-draw.wrong-1 .the-draw {
+  display: block;
+}
+.hangman-draw.wrong-2 .the-stand::before {
+  display: block;
+}
+.hangman-draw.wrong-3 .the-hang {
+  display: block;
+}
+.hangman-draw.wrong-4 .the-rope {
+  display: block;
+}
+.hangman-draw.wrong-5 .head{
+  display: block;
+}
+.hangman-draw.wrong-6 .body {
+  display: block;
+}
+.hangman-draw.wrong-7 .hands{
+  display: block;
+}
+.hangman-draw.wrong-8 .legs {
+  display: block;
+}
+
+/* Letters */
+
+.letters {
+  flex: 1;
+  padding: 15px;
+  text-align: center;
+}
+@media (max-width) {
+  .letters {
+    flex: 1;
+  }
+}
+
+.letters.finished {
+  pointer-events: none;
+}
+
+.letters .letter-box {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background-color: var(--alt-color);
+  color: white;
+  font-size: 24px;
+  margin-right: 10px;
+  line-height: 55px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+} 
+@media (max-width: 767px) {
+  .letters .letter-box {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+}
+
+.letters-guess {
+  margin: 10px auto;
+  background-color: var(--alt-light-color);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 104px;
+}
+
+.letters-guess span {
+  width: 60px;
+  height: 60px;
+  font-size: 24p;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fdfdfd;
+  border-bottom: 3px solid var(--alt-color);
+  transition: .3s;
+  color: var(--main-color);
+}
+
+.letters-guess span.with-space {
+  background: none;
+  border-bottom: none;
+  position: relative;
+}
+
+.letters-guess span.with-space::before {
+  content: "";
+  width: 20px;
+  height: 4px;
+  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.letter-box.clicked {
+  background-color: #222;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+
+.popup {
+  background-color: var(--alt-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 200px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation-name: animatemodel;
+  animation-duration: 0.4s;
+  color: white;
+  z-index: 1;
+}
+.popup::before {
+  content: "";
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+.play-again {
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 23px;
+  cursor: pointer;
+  transition: .3s;
+  margin-top: 5px;
+}
+.play-again:hover {
+  transform: scale(1.1);
+}
+
+p {
+  margin: 5px 0 10px 0;
+}
+
+
+@keyframes animatemodel {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
